@@ -277,12 +277,57 @@ footer {
     }
 }
 
+/* Sound Toggle Button */
+.sound-toggle {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-left: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sound-toggle:hover {
+    background: var(--gold);
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.sound-toggle.muted .sound-icon {
+    opacity: 0.5;
+}
+
+.sound-toggle.muted::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 24px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    transition: background 0.3s;
+}
+
+.sound-toggle.muted:hover::after {
+    background: black;
+}
+
+/* Responsive adjustment for sound toggle */
 @media (max-width: 768px) {
-    .team-grid {
-        grid-template-columns: 1fr;
+    .navbar {
+        padding: 1rem 5%;
     }
     
-    .nav-links {
-        display: none;
+    .sound-toggle {
+        margin-left: auto;
     }
 }

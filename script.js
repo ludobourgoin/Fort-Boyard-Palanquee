@@ -48,3 +48,45 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('scrolled');
     }
 });
+
+// Audio Management
+const music = document.getElementById('bgMusic');
+const soundToggle = document.getElementById('soundToggle');
+let isMuted = false;
+
+const playMusic = () => {
+    music.play().then(() => {
+        console.log("Autoplay successful");
+    }).catch(error => {
+        console.log("Autoplay blocked. Waiting for user interaction.");
+        // Audio will start on first click if autoplay is blocked
+    });
+};
+
+// Try to play on load
+window.addEventListener('load', playMusic);
+
+// Fallback: Start audio on first click on the document
+const startAudioOnInteraction = () => {
+    if (music.paused && !isMuted) {
+        playMusic();
+        document.removeEventListener('click', startAudioOnInteraction);
+    }
+};
+document.addEventListener('click', startAudioOnInteraction);
+
+// Toggle Mute
+soundToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent trigger from startAudioOnInteraction
+    isMuted = !isMuted;
+    
+    if (isMuted) {
+        music.pause();
+        soundToggle.classList.add('muted');
+        soundToggle.querySelector('.sound-icon').textContent = '🔇';
+    } else {
+        music.play();
+        soundToggle.classList.remove('muted');
+        soundToggle.querySelector('.sound-icon').textContent = '🔊';
+    }
+});
