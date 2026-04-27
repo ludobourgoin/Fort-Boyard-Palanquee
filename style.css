@@ -454,7 +454,9 @@ footer {
     }
     
     .sound-toggle {
-        margin-left: auto;
+        margin-left: 0;
+        margin-right: 1.5rem;
+        order: 0;
     }
 }
 

@@ -99,3 +99,15 @@ soundToggle.addEventListener('click', (e) => {
         soundToggle.querySelector('.sound-icon').textContent = '🔊';
     }
 });
+
+// Close Mobile Menu on Link Click
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navToggle) {
+            navToggle.checked = false;
+        }
+    });
+});
