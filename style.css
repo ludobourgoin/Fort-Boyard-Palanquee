@@ -226,7 +226,80 @@ body {
 .info-card h3 {
     color: var(--gold);
     margin-bottom: 1rem;
+}
+
+/* Challenges Section */
+.challenges {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(255, 215, 0, 0.02) 100%);
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: -2rem auto 4rem;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.challenge-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.challenge-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.challenge-card:hover::before {
+    opacity: 1;
+}
+
+.challenge-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+.challenge-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.challenge-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
 }
 
 /* Team Section */
