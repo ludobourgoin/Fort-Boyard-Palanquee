@@ -450,21 +450,52 @@ footer {
     visibility: hidden;
 }
 
+.start-content {
+    padding: 2rem;
+    max-width: 90%;
+}
+
 .start-content h2 {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 15vw, 10rem);
+    font-size: clamp(3rem, 12vw, 8rem);
     color: var(--gold);
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     text-shadow: 0 0 50px rgba(255, 215, 0, 0.4);
     animation: pulse 2s infinite ease-in-out;
 }
 
+.start-content h2 .subtitle {
+    display: block;
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    font-family: var(--font-body);
+    color: var(--text-light);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-top: -10px;
+    opacity: 0.8;
+}
+
 .start-content p {
-    font-size: 1.5rem;
-    margin-bottom: 4rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 3rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     opacity: 0.8;
+}
+
+/* Responsive for huge icons */
+@media (max-width: 768px) {
+    .challenge-icon {
+        font-size: 3.5rem;
+    }
+    
+    .challenge-card h3 {
+        font-size: 1.8rem;
+    }
+    
+    .start-content h2 {
+        font-size: 4rem;
+    }
 }
 
 @keyframes pulse {
