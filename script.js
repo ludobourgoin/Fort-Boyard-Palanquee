@@ -96,6 +96,7 @@ navLinks.forEach(link => {
         if (navToggle) {
             navToggle.checked = false;
         }
+    });
 });
 
 // Game Master Timer Logic
