@@ -109,5 +109,87 @@ navLinks.forEach(link => {
         if (navToggle) {
             navToggle.checked = false;
         }
+});
+
+// Game Master Timer Logic
+let timerInterval;
+let timeLeft = 0;
+let isRunning = false;
+
+const timerDisplay = document.getElementById('countdown-timer');
+const timerToggleButton = document.getElementById('timer-toggle');
+const timerResetButton = document.getElementById('timer-reset');
+const challengeBtns = document.querySelectorAll('.challenge-btn');
+
+const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+};
+
+const updateTimerDisplay = () => {
+    timerDisplay.textContent = formatTime(timeLeft);
+    if (timeLeft <= 10 && timeLeft > 0) {
+        timerDisplay.classList.add('warning');
+    } else {
+        timerDisplay.classList.remove('warning');
+    }
+};
+
+const startTimer = () => {
+    if (timeLeft <= 0) return;
+    isRunning = true;
+    timerToggleButton.textContent = 'Pause';
+    timerToggleButton.classList.remove('primary');
+    
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timerToggleButton.textContent = 'Start';
+            timerToggleButton.classList.add('primary');
+            // Optionnel: Ajouter un son d'alerte ici
+        }
+    }, 1000);
+};
+
+const pauseTimer = () => {
+    clearInterval(timerInterval);
+    isRunning = false;
+    timerToggleButton.textContent = 'Resume';
+    timerToggleButton.classList.add('primary');
+};
+
+timerToggleButton.addEventListener('click', () => {
+    if (isRunning) {
+        pauseTimer();
+    } else {
+        startTimer();
+    }
+});
+
+timerResetButton.addEventListener('click', () => {
+    pauseTimer();
+    const activeBtn = document.querySelector('.challenge-btn.active');
+    if (activeBtn) {
+        timeLeft = parseInt(activeBtn.getAttribute('data-time'));
+    } else {
+        timeLeft = 0;
+    }
+    timerToggleButton.textContent = 'Start';
+    updateTimerDisplay();
+});
+
+challengeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        pauseTimer();
+        challengeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        timeLeft = parseInt(btn.getAttribute('data-time'));
+        timerToggleButton.textContent = 'Start';
+        updateTimerDisplay();
     });
 });
