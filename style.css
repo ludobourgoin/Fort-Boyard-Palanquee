@@ -554,6 +554,10 @@ footer {
     .start-content h2 {
         font-size: 4rem;
     }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @keyframes pulse {
