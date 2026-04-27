@@ -460,26 +460,7 @@ footer {
     }
 }
 
-/* Start Overlay */
-.start-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-dark);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: opacity 0.8s ease, visibility 0.8s;
-}
-
-.start-overlay.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+/* Responsive adjustments for mobile menu */
 
 /* Responsive adjustments for mobile menu */
 @media (max-width: 768px) {
@@ -517,29 +498,8 @@ footer {
         transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    .start-overlay {
-        display: none !important; /* No splash screen on mobile */
-    }
 }
 
-.start-content h2 .subtitle {
-    display: block;
-    font-size: clamp(1rem, 4vw, 2.5rem);
-    font-family: var(--font-body);
-    color: var(--text-light);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-top: -10px;
-    opacity: 0.8;
-}
-
-.start-content p {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    margin-bottom: 3rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
 
 /* Responsive for huge icons */
 @media (max-width: 768px) {
@@ -551,9 +511,6 @@ footer {
         font-size: 1.8rem;
     }
     
-    .start-content h2 {
-        font-size: 4rem;
-    }
 
     .team-grid {
         grid-template-columns: 1fr;

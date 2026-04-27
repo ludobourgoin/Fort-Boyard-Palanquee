@@ -52,8 +52,6 @@ window.addEventListener('scroll', () => {
 // Audio Management
 const music = document.getElementById('bgMusic');
 const soundToggle = document.getElementById('soundToggle');
-const startOverlay = document.getElementById('startOverlay');
-const startButton = document.getElementById('startButton');
 let isMuted = false;
 
 const playMusic = () => {
@@ -64,18 +62,7 @@ const playMusic = () => {
     });
 };
 
-// Start Experience
-if (startButton) {
-    startButton.addEventListener('click', () => {
-        startOverlay.classList.add('hidden');
-        playMusic();
-        
-        // Remove the click fallback since we just played
-        document.removeEventListener('click', startAudioOnInteraction);
-    });
-}
-
-// Fallback: Start audio on first click on the document (if overlay missed or removed)
+// Start audio on first click on the document
 const startAudioOnInteraction = () => {
     if (music.paused && !isMuted) {
         playMusic();
