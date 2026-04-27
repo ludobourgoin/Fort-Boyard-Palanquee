@@ -52,21 +52,30 @@ window.addEventListener('scroll', () => {
 // Audio Management
 const music = document.getElementById('bgMusic');
 const soundToggle = document.getElementById('soundToggle');
+const startOverlay = document.getElementById('startOverlay');
+const startButton = document.getElementById('startButton');
 let isMuted = false;
 
 const playMusic = () => {
     music.play().then(() => {
-        console.log("Autoplay successful");
+        console.log("Audio playing");
     }).catch(error => {
-        console.log("Autoplay blocked. Waiting for user interaction.");
-        // Audio will start on first click if autoplay is blocked
+        console.log("Audio play failed:", error);
     });
 };
 
-// Try to play on load
-window.addEventListener('load', playMusic);
+// Start Experience
+if (startButton) {
+    startButton.addEventListener('click', () => {
+        startOverlay.classList.add('hidden');
+        playMusic();
+        
+        // Remove the click fallback since we just played
+        document.removeEventListener('click', startAudioOnInteraction);
+    });
+}
 
-// Fallback: Start audio on first click on the document
+// Fallback: Start audio on first click on the document (if overlay missed or removed)
 const startAudioOnInteraction = () => {
     if (music.paused && !isMuted) {
         playMusic();
@@ -77,7 +86,7 @@ document.addEventListener('click', startAudioOnInteraction);
 
 // Toggle Mute
 soundToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent trigger from startAudioOnInteraction
+    e.stopPropagation(); 
     isMuted = !isMuted;
     
     if (isMuted) {
