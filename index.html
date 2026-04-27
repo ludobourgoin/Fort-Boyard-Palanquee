@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fort Boyard à la Palanquée - Sète</title>
+    <meta name="description" content="Rejoignez-nous pour une soirée épique au Fort Boyard des Palancoeurs à Sète !">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Fort Boyard<span>à la Palanquée</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">L'Événement</a></li>
+            <li><a href="#inscription">Inscription</a></li>
+            <li><a href="#organisateurs">Organisateurs</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate-title">Fort Boyard</h1>
+            <p class="hero-subtitle">Mardi 5 Mai | 19h - 21h</p>
+            <div id="countdown" class="hero-countdown">
+                <!-- Countdown injected by JS -->
+            </div>
+            <a href="#inscription" class="btn-primary">Rejoindre l'aventure</a>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">Le Concept</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Le Fort Boyard est enfin de retour ! Rendez-vous le <strong>mardi 5 mai de 19h à 21h</strong> pour vivre un moment historique.</p>
+                    <p>Deux équipes de 6 s'affronteront autour d'une multitude d'épreuves de <strong>force, d'habileté, de logique et de mémoire</strong>... sans oublier les défis drôles et absurdes qui font le charme de la Palanquée !</p>
+                    <div class="motto">"Toujours plus haut, toujours plus loin, toujours plus fort !"</div>
+                </div>
+                <div class="about-info">
+                    <div class="info-card">
+                        <h3>Public</h3>
+                        <p>Pas envie de relever les défis ? Le public joue un rôle essentiel pour soutenir et encourager les équipes. Venez donner de la voix !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inscription" class="section inscription">
+        <div class="container">
+            <h2 class="section-title">Inscription</h2>
+            <div class="widget-container">
+                <iframe id="haWidget" allowtransparency="true" scrolling="auto" src="https://www.helloasso.com/associations/tielle-et-popcorn/evenements/fort-boyard-des-palancoeurs-1/widget" style="width: 100%; height: 750px; border: none;" onload="window.addEventListener('message', function(e) { const dataHeight = e.data.height; const haWidgetElement = document.getElementById('haWidget'); if (dataHeight > parseFloat(haWidgetElement.height || 0)) { haWidgetElement.height = dataHeight + 'px';}})"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="organisateurs" class="section team">
+        <div class="container">
+            <h2 class="section-title">Les Maîtres du Jeu</h2>
+            <div class="team-grid">
+                <div class="member-card">
+                    <div class="member-icon">☀️</div>
+                    <h3>Danaë</h3>
+                </div>
+                <div class="member-card">
+                    <div class="member-icon">⚓</div>
+                    <h3>Sylvine</h3>
+                </div>
+                <div class="member-card">
+                    <div class="member-icon">🍿</div>
+                    <h3>Ludo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Fort Boyard à la Palanquée - Sète, France</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
