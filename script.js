@@ -62,14 +62,23 @@ const playMusic = () => {
     });
 };
 
-// Start audio on first click on the document
+// Start audio on any user interaction
 const startAudioOnInteraction = () => {
     if (music.paused && !isMuted) {
         playMusic();
-        document.removeEventListener('click', startAudioOnInteraction);
+        // Remove all listeners once it starts
+        ['click', 'scroll', 'touchstart', 'mousemove'].forEach(event => {
+            document.removeEventListener(event, startAudioOnInteraction);
+        });
     }
 };
-document.addEventListener('click', startAudioOnInteraction);
+
+['click', 'scroll', 'touchstart', 'mousemove'].forEach(event => {
+    document.addEventListener(event, startAudioOnInteraction);
+});
+
+// Try to play immediately on load (will likely be blocked, but good to have)
+window.addEventListener('load', playMusic);
 
 // Toggle Mute
 soundToggle.addEventListener('click', (e) => {
